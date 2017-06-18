@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html class='v2' dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+</head>
+
+<body>
+<main>
+<button class="open-popup-link buttoon is-blue" onclick="drawChart();"><i class="icon-bars"></i> See Results</button>
+
+<!--Result Start-->
+<div style="min-height:500px;height: 100%;width: 100%;margin:auto;background:#fff;text-align:center"> 
+	<div id="chart_div" style="height: 100%;width: 100%;margin:auto;min-height:500px;"></div>
+</div>
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", '1', {packages:['corechart']});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+  var query = new google.visualization.Query(
+      'https://docs.google.com/spreadsheet/ccc?key=0Am_zXEZdjmQsdFRmMGF0OVJUWU9TVVNkY0hCaGYwalE&usp=drive_web#gid=0');
+  query.setQuery('SELECT A,B');
+  query.send(handleQueryResponse);
+}
+
+function handleQueryResponse(response) {
+	if (response.isError()) {
+		alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+		return;
+	}
+
+	var options = {
+		title: ' Which team will win the 2014 NBA Playoffs?????' ,
+		fontName : 'Open Sans',
+		colors:['#D4DBDF','#208DCB', '#98012E', '#FDBA34', '#0068B3'],
+		is3D: true,
+		legend: {position: 'bottom', textStyle: {color: '#666666', fontSize: 16}}
+	};
+
+	var data = response.getDataTable();
+	// var jsontxt = "{\"cols\":[{\"id\":\"A\",\"label\":\"TEAM\",\"type\":\"string\"},{\"id\":\"B\",\"label\":\"VOTES\",\"type\":\"number\",\"pattern\":\"0\"}],\"rows\":[{\"c\":[{\"v\":\"Spurs\"},{\"v\":125,\"f\":\"125\"}]},{\"c\":[{\"v\":\"Thunder\"},{\"v\":119,\"f\":\"119\"}]},{\"c\":[{\"v\":\"Heat\"},{\"v\":261,\"f\":\"261\"}]},{\"c\":[{\"v\":\"Pacers\"},{\"v\":40,\"f\":\"40\"}]},{\"c\":[{\"v\":\"Other\"},{\"v\":37,\"f\":\"37\"}]}]}";
+	// var data2 = JSON.parse(jsontxt);
+	// alert(JSON.stringify(data2));
+	// alert(typeof data);
+	// alert(data.id)
+
+	// var chartobj = {};
+
+    // chartobj = data2;
+	// document.getElementById('jsontext').innerText = jsontxt;
+	var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	chart.draw(data, options);
+}
+
+</script>
+<div id="jsontext">
+</div>
+</main>
+</body>
+
+</html>

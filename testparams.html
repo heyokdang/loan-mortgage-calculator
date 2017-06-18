@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Test</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body ng-app="myApp">
+  	<div class="container" ng-controller="myCtrl">
+  		<div class="row">
+  			<div class="col-sm-12">
+  				Testing ...222
+  			</div>
+  		</div>
+  	</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>var j = jQuery.noConflict();</script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script src="js/angular.min.js"></script>
+    <!-- 
+      http://localhost/loancalculator2/testparams.html#?a=100&b=200&c=con cat&d=con de 
+      http://localhost/loancalculator2/testparams.html#?foo=yipee&e=empty&f=funny#hashValue
+    -->
+    <script>
+    	var app = angular.module("myApp", []);
+    	app.controller("myCtrl", ['$scope','$filter','$location',function($scope,$filter,$location){
+        // var host = $location.host();
+        // alert(host);
+        // var search = $location.search();
+        // alert(search.a);
+        // alert(search.d);
+        // var port = $location.port();
+        // alert(port);
+
+        // var path = $location.path();
+        // alert(path);
+
+        // var hash = $location.hash();
+        // alert(hash);
+
+        // var protocol = $location.protocol();
+        // alert(protocol);
+
+// $scope.amountOneTimePaymentList =[];
+//   $scope.dateOneTimePaymentList = [];
+//   $scope.oneTimePaymentList = [];
+        // create url params object to share url
+        var paramsObj = new Object();
+        paramsObj.firstName = "John";
+        paramsObj.lastName = "Doe";
+        paramsObj.age = 33;
+        paramsObj.job = "IT";
+        paramsObj.favorite = [];
+        paramsObj.favorite.push("boi loi");
+        paramsObj.favorite.push("bong da");
+        paramsObj.favorite.push("quan vot");
+        paramsObj.favorite.push("da cau");
+        $location.search(paramsObj);
+
+        var fav = $location.search();
+        var fa = fav.favorite;
+        angular.forEach(fa, function(value, key) {
+          alert(key + " " + value);
+        });
+
+        // var person = {firstName:"John", lastName:"Doe", age:100};
+        // $location.search(person);
+
+        // $location.search('foo', 'yipee');
+        // alert(search.foo);
+
+        // $location.search('e', 'empty');
+        // alert(search.e);
+
+        // $location.search('f', 'funny');
+        // alert(search.f);
+
+    	}]);
+    </script>
+    
+    <script>
+      jQuery( document ).ready(function( $ ) {
+        
+
+      });
+ 
+    </script>
+
+  </body>
+</html>

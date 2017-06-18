@@ -1,0 +1,22 @@
+.navbar-right { position: relative; }
+
+.navbar-right li { padding: 10px 15px; }
+
+#likeus {
+  position: absolute;
+  top: 35px;
+  left: 0px;
+  z-index: 1999;
+  background: url("../img/arrow-red.png") no-repeat top left;
+  width: 129px;
+  height: 74px;
+}
+#likeus2 {
+  position: absolute;
+  top:-126px;
+  left: 0px;
+  z-index: 1999;
+  background: url("../img/arrow-red2.png") no-repeat top left;
+  width: 74px;
+  height: 129px;
+}

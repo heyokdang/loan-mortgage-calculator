@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan">
-    <meta name="keywords" content="loan calculator,mortgage calculator,auto loan calculator,car loan calculator,mortgage,home loan calculator,mortgage payment calculator,amortization,amortization calculator,loan amortization,mortgage amortization,amortization table,loan amortization calculator,mortgage amortization calculator,amortization calculator mortgage,amortization formula,amortization chart,loan amortization schedule">
+    <meta name="description" content="The best Mortgage Calculator softwave, Calculate your monthly mortgage payment">
+    <meta name="keywords" content="mortgage calculator,mortgage,home loan calculator,amortization,mortgage payment calculator,interest calculator,amortization schedule,payment calculator,amortization calculator,mortgage calculator uk">
     <meta name="author" content="">
     <meta name="google-site-verification" content="lN-dqbwZvJ6AJafFNevQtC7EZorowspUwuRGOZ8Hf1c" />
 
@@ -14,13 +14,13 @@
     <meta property="og:url"                content="http://www.loancalculator.pw" />
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content="Welcom to LoanCalculator.pw!" />
-    <meta property="og:description"        content="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan" />
+    <meta property="og:description"        content="The best Mortgage Calculator softwave, Calculate your monthly mortgage payment" />
     <meta property="og:image"              content="img/loan-calculator1.jpg" />
     <meta property="og:site_name"          content="Loancalculator" />
     <meta property="fb:app_id"             content="957153911066174" />
 
-    <title>Loan Calculator</title>
-    
+    <title>Mortgage calculator</title>
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,7 +30,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/app.css" rel="stylesheet">
-    <link href="css/loan-calculator.css" rel="stylesheet" type="text/css">
+    <link href="css/mortgage-calculator.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" media="print" href="css/mortgage-calculator-print.css">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -123,8 +123,8 @@
 
       <div class="row hidden-print">
         <div class="col-md-8 col-sm-12">
-          <h1>Loan Calculator</h1>
-          <p>The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate, click ADD EXTRA PAYMENTS to add extra payments. This calculator can be used for mortgage, auto, or any other fixed loan types.</p>
+          <h1>Mortgage Calculator</h1>
+          <p>The best Mortgage Calculator softwave, Calculate your monthly mortgage payment using the free calculator below. A house is the largest purchase most of us will ever make so it's important to calculate what your mortgage payment will be and how much you can afford. Estimate your monthly payments and see the effect of adding extra payments.</p>
           <hr>
           <div class="row">
             <div class="col-md-12 calculator-form">
@@ -152,13 +152,26 @@
 
                     <div class="form-group">
                       <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Loan amount</span><span class="spright">$</span></div>
+                        <div class="input-group-addon"><span class="spleft">Mortgage Amount</span><span class="spright">$</span></div>
                         <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamount" readonly>
                       </div>
                     </div>
 
-                  </div>
-                  <div class="col-md-6">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-addon">Mortgage term in years</div>
+                        <input ng-model="loanterminyears" ym-num ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
+                      </div>
+                    </div>
+                
+                    <!-- <p class="br-ortext">or</p> -->
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-addon">or Mortgage term in months</div>
+                        <input ng-model="loanterminmonths" ym-num ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
+                      </div>
+                    </div>
 
                     <div class="form-group">
                       <div class="input-group">
@@ -167,17 +180,55 @@
                       </div>
                     </div>
 
+                    
+
+                  </div>
+                  <div class="col-md-6">
+
                     <div class="form-group">
                       <div class="input-group">
-                        <div class="input-group-addon">Loan term in years</div>
-                        <input ng-model="loanterminyears" ym-num ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
+                        <div class="input-group-addon"><span class="spleft">PMI (FHA) per year</span><span class="spright">$</span></div>
+                        <input money-num ng-model="pmi" ng-change="Callpmipercent()" type="text" class="form-control form-control2" id="pmi">
+                        <div class="form-control2">
+                          <input ym-num ng-model="pmipercent" ng-change="Callpmi()" type="text" class="form-control percent" id="pmipercent"><span class="percenticon">%</span>
+                        </div>
                       </div>
                     </div>
-                
+
+
                     <div class="form-group">
                       <div class="input-group">
-                        <div class="input-group-addon">or Loan term in months</div>
-                        <input ng-model="loanterminmonths" ym-num ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
+                        <div class="input-group-addon notice">
+                          <span class="spleft">PMI (FHA) only applied when downpayment < 20%</span>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-addon"><span class="spleft">Property taxs/year</span><span class="spright">$</span></div>
+                        <input money-num ng-model="propertytaxs" ng-change="Callpropertytaxspercent()" type="text" class="form-control form-control2" id="propertytaxs">
+                        <div class="form-control2">
+                          <input ym-num ng-model="propertytaxspercent" ng-change="Callpropertytaxs()" type="text" class="form-control percent" id="propertytaxspercent"><span class="percenticon">%</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-addon"><span class="spleft">Home insurance</span><span class="spright">$</span></div>
+                        <input money-num ng-model="homeinsurance" type="text" ng-change="Callhomeinsurancepercent()" class="form-control form-control2" id="homeinsurance">
+                        <div class="form-control2">
+                          <input ym-num ng-model="homeinsurancepercent" type="text" ng-change="Callhomeinsurance()" class="form-control percent" id="homeinsurancepercent"><span class="percenticon">%</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-addon"><span class="spleft">HOA dues per month</span><span class="spright">$</span></div>
+                        <input money-num ng-model="hoadues" type="text" class="form-control" id="hoadues">
                       </div>
                     </div>
 
@@ -359,10 +410,6 @@
                   </div>
                   <div class="col-sm-12 showbriefinfo">
 
-
-
-                    
-
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
                         <div google-chart chart="chartObject" class="chart"></div>
@@ -386,7 +433,21 @@
                         <br><br><br>
                         <br>
                       </div>
-                    </div>                    
+                    </div>
+                    
+                    <!-- <div class="row" ng-show="drawcharts">
+                      <div class="col-sm-12">
+                        <h4>YEARLY AMORTIZATION CHART</h4>
+                        <div google-chart chart="lineYearlyAmortizationAnnotationChartObject" ng-show="annualamortizationtable" class="chart"></div>
+                      </div>
+                    </div> -->
+                    
+                    <!-- <div class="row" ng-show="drawcharts">
+                      <div class="col-sm-12">
+                        <div google-chart chart="lineYearlyAmortizationFullChartObject" ng-show="annualamortizationtable" class="chart"></div>
+                      </div>
+                    </div> -->
+                    
 
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
@@ -435,6 +496,26 @@
                             Interest rate per year
                           </li>
                           <li class="list-group-item">
+                            {{pmi | currency}} ({{pmipercent}}%)<br>
+                            PMI per year
+                          </li>
+                          <li class="list-group-item">
+                            {{pmimonths}}<br>
+                            Months of PMI (till {{pmi_ofday}})
+                          </li>
+                          <li class="list-group-item">
+                            {{propertytaxs | currency}} ({{propertytaxspercent}}%)<br> 
+                            Property taxs per year
+                          </li>
+                          <li class="list-group-item">
+                            {{homeinsurance | currency}} ({{homeinsurancepercent}}%)<br>
+                            Home insurance per year
+                          </li>
+                          <li class="list-group-item">
+                            {{hoadues | currency}}<br>
+                            HOA dues per month
+                          </li>
+                          <li class="list-group-item">
                             {{loanterminyears}}<br>
                             Loan term in years
                           </li>
@@ -481,12 +562,37 @@
                             Monthly payment
                           </li>
                           <li class="list-group-item">
+                            {{pmi/12 | currency}}<br>
+                            Monthly PMI ({{pmimonths}} times, till {{pmi_ofday}})
+                          </li>
+                          <li class="list-group-item">
+                            {{propertytaxs/12 | currency}}<br>
+                            Monthly property taxs
+                          </li>
+                          <li class="list-group-item">
+                            {{homeinsurance/12 | currency}}<br>
+                            Monthly home insurance
+                          </li>
+                          <li class="list-group-item">
+                            {{hoadues | currency}}<br>
+                            Monthly HOA dues
+                          </li>
+                          <li class="list-group-item">
+                            {{monthly_pmi_taxs_insurance_hoa | currency}}<br>
+                            Monthly TAXS INSURANCE PMI HOA (TAXS ...)
+                          </li>
+
+                          <li class="list-group-item">
                             {{monthly_principal_interest | currency}}<br>
                             Monthly Principal & Interest
                           </li>
                           <li class="list-group-item">
                             {{months}}<br>
                             Number of Payments
+                          </li>
+                          <li class="list-group-item">
+                            {{total_pmi_taxs_insurance_hoa_paid | currency}}<br>
+                            Total TAXS INSURANCE PMI HOA Paid
                           </li>
                           <li class="list-group-item">
                             {{total_interest_paid | currency}}<br>
@@ -518,6 +624,27 @@
                             Monthly Payment
                           </li>
                           <li class="list-group-item">
+                            {{pmi/12 | currency}}<br>
+                            Monthly PMI ({{extra_payment_pmimonths}} times, till {{extra_payment_pmi_ofday}})
+                          </li>
+                          <li class="list-group-item">
+                            {{propertytaxs/12 | currency}}<br>
+                            Monthly property taxs
+                          </li>
+                          <li class="list-group-item">
+                            {{homeinsurance/12 | currency}}<br>
+                            Monthly home insurance
+                          </li>
+                          <li class="list-group-item">
+                            {{hoadues | currency}}<br>
+                            Monthly HOA dues
+                          </li>
+                          <li class="list-group-item">
+                            {{monthly_pmi_taxs_insurance_hoa | currency}}<br>
+                            Monthly TAXS INSURANCE PMI HOA (TAXS ...)
+                          </li>
+
+                          <li class="list-group-item">
                             {{monthly_principal_interest | currency}}<br>
                             Monthly Principal & Interest
                           </li>
@@ -525,6 +652,11 @@
                             {{extrapayment_months}}<br>
                             Number of Payments
                           </li>
+                          <li class="list-group-item">
+                            {{extrapayment_total_pmi_taxs_insurance_hoa_paid | currency}}<br>
+                            Total TAXS INSURANCE PMI HOA Paid
+                          </li>
+                          
                           <li class="list-group-item">
                             {{extrapayment_total_interest_paid | currency}}<br>
                             Total Interest Paid
@@ -545,6 +677,14 @@
                             {{(total_interest_paid - extrapayment_total_interest_paid) | currency}}<br>
                             Total interest savings
                           </li>
+                          <li class="list-group-item">
+                            {{total_pmi_taxs_insurance_hoa_paid - extrapayment_total_pmi_taxs_insurance_hoa_paid | currency}}<br>
+                            Total TAXS INSURANCE PMI HOA savings
+                          </li>
+                          <li class="list-group-item">
+                            {{((total_pmi_taxs_insurance_hoa_paid - extrapayment_total_pmi_taxs_insurance_hoa_paid) + (total_interest_paid - extrapayment_total_interest_paid)) | currency}}<br>
+                            Total savings
+                          </li>
                         </ul>
                       </div>
 
@@ -564,6 +704,7 @@
                           <th>INTEREST</th>
                           <th ng-show="extra_payments_information_show">EXTRA</th>
                           <!-- <th>TOTAL INTEREST</th> -->
+                          <th>TAXS ...</th>
                           <th>BALANCE</th>
                         </tr>
                       </thead>
@@ -575,6 +716,7 @@
                           <td>{{yearly_amortization.yearly_interest | currency}}</td>
                           <td ng-show="extra_payments_information_show">{{yearly_amortization.yearly_extrayearlypayment | currency}}</td>
                           <!-- <td>{{yearly_amortization.yearly_total_interest | currency}}</td> -->
+                          <td>{{yearly_amortization.yearly_pmi_taxs_insurance_hoa | currency}}</td>
                           <td>{{yearly_amortization.yearly_balance | currency}}</td>
                         </tr>
                       </tbody>
@@ -595,6 +737,7 @@
                           <th>INTEREST</th>
                           <th ng-show="extra_payments_information_show">EXTRA</th>
                           <!-- <th>TOTAL INTEREST</th> -->
+                          <th>TAXS ...</th>
                           <th>BALANCE</th>
                         </tr>
                       </thead>
@@ -607,6 +750,7 @@
                           <td>{{amortization.interest_part | currency}}</td>
                           <td ng-show="extra_payments_information_show">{{amortization.extramonthlypayment | currency}}</td>
                           <!-- <td>{{amortization.total_interest | currency}}</td> -->
+                          <td>{{amortization.pmi_taxs_insurance_hoa | currency}}</td>
                           <td>{{amortization.balance | currency}}</td>
                         </tr>
                       </tbody>
@@ -659,12 +803,11 @@
             <div id="likeus2"></div>
           </ul>
           <!-- End likeus-footer.html -->
-          
+
           </div>
         </div>
       </footer>
     </div> <!-- /container -->
-    
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -681,10 +824,10 @@
     <script src="js/angular-messages.min.js"></script>
     <script src="js/angular-material.min.js"></script>
     <script src='js/fr-ca.min.js' charset='utf-8'></script>
-    <script src='js/ng-bs3-datepicker.js' charset='utf-8'></script>
+    <script src='js/ng-bs3-datepicker.min.js' charset='utf-8'></script>
     
     <script src="js/ng-google-chart.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/mortgage-calculator.js"></script>
     
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>

@@ -5,22 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan">
-    <meta name="keywords" content="loan calculator,mortgage calculator,auto loan calculator,car loan calculator,mortgage,home loan calculator,mortgage payment calculator,amortization,amortization calculator,loan amortization,mortgage amortization,amortization table,loan amortization calculator,mortgage amortization calculator,amortization calculator mortgage,amortization formula,amortization chart,loan amortization schedule">
+    <meta name="description" content="Mortgage calculator">
+    <meta name="keywords" content="mortgage calculator,mortgage,home loan calculator,amortization,mortgage payment calculator,interest calculator,amortization schedule,payment calculator,amortization calculator,mortgage calculator uk">
     <meta name="author" content="">
-    <meta name="google-site-verification" content="lN-dqbwZvJ6AJafFNevQtC7EZorowspUwuRGOZ8Hf1c" />
 
     <!-- Facebook Like, Share content -->
-    <meta property="og:url"                content="http://www.loancalculator.pw" />
+    <meta property="og:url"                content="http://www.loancalculator.pw/mortgage-calculator.html" />
     <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="Welcom to LoanCalculator.pw!" />
-    <meta property="og:description"        content="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan" />
-    <meta property="og:image"              content="img/loan-calculator1.jpg" />
+    <meta property="og:title"              content="Mortgage calculator" />
+    <meta property="og:description"        content="Trusted, easy-to-use mortgage calculator helps you calculate monthly payments, see the effect of adding extra payments, and more." />
+    <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
     <meta property="og:site_name"          content="Loancalculator" />
     <meta property="fb:app_id"             content="957153911066174" />
 
-    <title>Loan Calculator</title>
-    
+    <title>Mortgage Calculator</title>
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,11 +29,8 @@
 
     <!-- Custom styles for this template -->
     <link href="css/app.css" rel="stylesheet">
-    <link href="css/loan-calculator.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" media="print" href="css/mortgage-calculator-print.css">
-
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="css/mortgage-calculator.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" media="print" href="css/print.css">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -48,20 +44,27 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
+    
   </head>
 
   <body ng-controller="LoanCalculatorCtr as LCCtr" ng-cloak>
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T56DV8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T56DV8');</script>
+    <!-- End Google Tag Manager -->
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-75178474-1', 'auto');
       ga('send', 'pageview');
-
     </script>
 
     <div id="fb-root"></div>
@@ -73,44 +76,15 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
+
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default hidden-print">
       <div class="container">
-        <div class="navbar-header">
-
-          <!-- Nav header navbar-header.html -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html" alt="HOME" title="HOME"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
-          <!-- End Nav header -->
-
+        <div class="navbar-header" ng-include="'navbar-header.html'">
+          
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-
-          <!-- Navbar navbar.html -->
-          <ul class="nav navbar-nav">
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <div class="fb-like" data-href="http://loancalculator.pw" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-            </li>
-            <li>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://loancalculator.pw" data-text="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan" data-via="loan_calc">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </li>
-            <li>
-              <!-- Place this tag where you want the share button to render. -->
-              <div class="g-plus" data-action="share" data-annotation="bubble"></div>
-            </li>
-            <div id="likeus"></div>
-          </ul>
-          <!-- End Navbar navbar.html -->
-
+        <div id="navbar" class="navbar-collapse collapse" ng-include="'navbar.html'">
+          
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -123,85 +97,81 @@
 
       <div class="row hidden-print">
         <div class="col-md-8 col-sm-12">
-          <h1>Loan Calculator</h1>
-          <p>The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate, click ADD EXTRA PAYMENTS to add extra payments. This calculator can be used for mortgage, auto, or any other fixed loan types.</p>
+          <h1>Mortgage Calculator</h1>
+          <p>Calculate your monthly mortgage payment using the free calculator below. A house is the largest purchase most of us will ever make so it's important to calculate what your mortgage payment will be and how much you can afford. Estimate your monthly payments and see the effect of adding extra payments.</p>
           <hr>
           <div class="row">
             <div class="col-md-12 calculator-form">
               <form class="" ng-submit="calculate()">
-
-                <div class="row">
-                  <div class="col-md-6">
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Home value</span><span class="spright">$</span></div>
-                        <input money-num ng-model="homevalue" ng-change="Callhomevalue()" type="text" class="form-control" id="homevalue">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Down payment</span><span class="spright">$</span></div>
-                        <input money-num ng-model="downpayment" ng-change="Calldownpaymentpercent()" type="text" class="form-control form-control2" id="downpayment">
-                        <div class="form-control2">
-                          <input ym-num ng-model="downpaymentpercent" ng-change="Calldownpayment()" type="text" class="form-control percent" id="downpaymentpercent"><span class="percenticon">%</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Loan amount</span><span class="spright">$</span></div>
-                        <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamount" readonly>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Interest rate per year</span><span class="spright">%</span></div>
-                        <input ng-model="interestrateperyear" ym-num type="text" class="form-control" id="interestrateperyear">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon">Loan term in years</div>
-                        <input ng-model="loanterminyears" ym-num ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
-                      </div>
-                    </div>
-                
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon">or Loan term in months</div>
-                        <input ng-model="loanterminmonths" ym-num ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                        <ng-bs3-datepicker id="loanstartdate" data-ng-model='loanstartdate' date-min-view-mode="months" date-view-mode="months" date-format="MMM YYYY" language="en-ca" />
-                    </div>
-
+              
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><span class="spleft">Mortgage amount</span><span class="spright">$</span></div>
+                    <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamountid">
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <button id="bt_calculator" type="submit" class="btn btn-primary">CALCULATE</button>
-                    </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">Mortgage term in years</div>
+                    <input ng-model="loanterminyears" ym-num ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
                   </div>
+                </div>
+                
+                <p class="br-ortext">or</p>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">Mortgage term in months</div>
+                    <input ng-model="loanterminmonths" ym-num ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><span class="spleft">Interest rate per year</span><span class="spright">%</span></div>
+                    <input ng-model="interestrateperyear" ym-num type="text" class="form-control" id="interestrateperyear">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <ng-bs3-datepicker id="loanstartdate" data-ng-model='loanstartdate' date-min-view-mode="months" date-view-mode="months" date-format="MMM YYYY" language="en-ca" />
+                </div>
+
+                <div class="form-group">
+                  <button id="bt_calculator" type="submit" class="btn btn-primary">CALCULATE</button>
                 </div>
               </form>
             </div>
-
-
-
+            <div class="col-md-12">
+               
+                  <button id="outputparameters" type="button" class="btn btn-link" ng-click="showOutputParameters()">
+                    <span class="glyphicon glyphicon-collapse-down"></span> Output parameters
+                  </button>
+                  <div id="collapseoutputparameters" ng-show="output_parameters_show">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="checkbox">
+                          <label><input type="checkbox" ng-model="drawcharts" value="" ng-change="urlDrawcharts()">Draw charts</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="checkbox">
+                          <label><input type="checkbox" ng-model="annualamortizationtable" value="" ng-change="urlAnnual()">Annual amortization table</label>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="checkbox">
+                          <label><input type="checkbox" ng-model="monthlyamortizationtable" value="" ng-change="urlMonthly()">Monthly amortization table</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+            </div>
           </div>
         </div>
-        <div class="col-md-4 col-sm-12"><h2 style="display:none">Advertisement</h2></div>
+        <div class="col-md-4 col-sm-12"><h2>Advertisement</h2></div>
       </div>
 
       <div class="row">
@@ -227,7 +197,7 @@
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      to your monthly payment.
+                      to your monthly mortgage payment.
                     </div>
                   </div>
 
@@ -242,7 +212,7 @@
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      as an extra yearly payment occurring every
+                      as an extra yearly mortgage payment occurring every...
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
@@ -272,7 +242,7 @@
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      as a one-time payment in
+                      as a one-time mortgage payment in...
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
@@ -309,46 +279,16 @@
             </div>
 
             <div class="col-sm-12 hidden-print">
-              
               <button id="amortization_schedule_bt" type="button" class="btn btn-success" ng-click="showAmortizationSchedule()">
                 <span class="glyphicon glyphicon-collapse-down"></span> SHOW AMORTIZATION SCHEDULE
               </button>
               <br>
               <br>
-              <button id="outputparameters" type="button" class="btn btn-link" ng-click="showOutputParameters()">
-                <span class="glyphicon glyphicon-collapse-down"></span> Output parameters
-              </button>
-              <div id="collapseoutputparameters" ng-show="output_parameters_show">
-                <div class="row">
-                  <div class="col-sm-4">
-                    <div class="checkbox">
-                      <label><input type="checkbox" ng-model="drawcharts" value="" ng-change="urlDrawcharts()">Draw charts</label>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="checkbox">
-                      <label><input type="checkbox" ng-model="annualamortizationtable" value="" ng-change="urlAnnual()">Annual amortization table</label>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="checkbox">
-                      <label><input type="checkbox" ng-model="monthlyamortizationtable" value="" ng-change="urlMonthly()">Monthly amortization table</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
             <div class="col-sm-12" style="text-align:center">
               <div id="amortization_schedule" ng-show="amortization_schedule_show">
-                <div class="row notification" ng-show="dont_show_no_result">
-                  <br><br>
-                  <p>Please enter data in form and press CALCULATOR button to show the result.</p>
-                  <p>Or click ADD EXTRA PAYMENTS to show the form, add data in fields needed, click ADD MORE ONE-TIME PAYMENT button to add more one-time payment if needed and press APPLY EXTRA PAYMENTS button to show the result.</p>
-                  <br><br>
-                </div>
-                <div class="row" ng-hide="dont_show_no_result">
+                <div class="row">
                   <div class="col-sm-12">
                     <a type="button" class="btn btn-default hidden-print" href="javascript:window.print()">
                       <span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT THIS SCHEDULE
@@ -358,14 +298,9 @@
                     <br>
                   </div>
                   <div class="col-sm-12 showbriefinfo">
-
-
-
-                    
-
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
-                        <div google-chart chart="chartObject" class="chart"></div>
+                        <div google-chart chart="chartObject"></div>
                       </div>
                     </div>
                     <div class="row" ng-show="drawcharts">
@@ -375,22 +310,22 @@
                     </div>
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
-                        <div google-chart chart="lineYearlyAmortizationChartObject" ng-show="annualamortizationtable" class="chart"></div>
+                        <div google-chart chart="lineYearlyAmortizationChartObject" ng-show="annualamortizationtable"></div>
                       </div>
                     </div>
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
-                        <div google-chart chart="lineYearlyBalanceChartObject" ng-show="annualamortizationtable" class="chart"></div>
+                        <div google-chart chart="lineYearlyBalanceChartObject" ng-show="annualamortizationtable"></div>
                       </div>
                       <div class="col-sm-12 visible-print-block" ng-show="annualamortizationtable && !monthlyamortizationtable">
                         <br><br><br>
                         <br>
                       </div>
-                    </div>                    
+                    </div>
 
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
-                        <div google-chart chart="lineMonthlyAmortizationChartObject" ng-show="monthlyamortizationtable" class="chart"></div>
+                        <div google-chart chart="lineMonthlyAmortizationChartObject" ng-show="monthlyamortizationtable"></div>
                       </div>
                       <div class="col-sm-12 visible-print-block" ng-show="monthlyamortizationtable && annualamortizationtable">
                         <br><br><br>
@@ -400,7 +335,7 @@
                     </div>
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
-                        <div google-chart chart="lineMonthlyBalanceChartObject" ng-show="monthlyamortizationtable" class="chart"></div>
+                        <div google-chart chart="lineMonthlyBalanceChartObject" ng-show="monthlyamortizationtable"></div>
                       </div>
                       <div class="col-sm-12 visible-print-block" ng-show="monthlyamortizationtable && !annualamortizationtable">
                         <br><br><br>
@@ -416,35 +351,27 @@
                       <div class="col-sm-6">
                         <ul class="list-group">
                           <li class="list-group-item">
-                            <h4>LOAN DATA INFORMATION</h4>
+                            <h4>MORTGAGE DATA INFORMATION</h4>
                           </li>
                           <li class="list-group-item">
-                            {{homevalue | currency}}<br>
-                            Home value
+                            <h4>${{loanamount}}</h4>
+                            <h5>Mortgage amount</h5>
                           </li>
                           <li class="list-group-item">
-                            {{downpayment | currency}} ({{downpaymentpercent}}%)<br>
-                            Down payment
+                            <h4>{{loanterminyears}}</h4>
+                            <h5>Mortgage term in years</h5>
                           </li>
                           <li class="list-group-item">
-                            {{loanamount | currency}}<br>
-                            Loan amount
+                            <h4>{{loanterminmonths}}</h4>
+                            <h5>Mortgage term in months</h5>
                           </li>
                           <li class="list-group-item">
-                            {{interestrateperyear}}%<br>
-                            Interest rate per year
+                            <h4>{{interestrateperyear}}</h4>
+                            <h5>Interest rate per year</h5>
                           </li>
                           <li class="list-group-item">
-                            {{loanterminyears}}<br>
-                            Loan term in years
-                          </li>
-                          <li class="list-group-item">
-                            {{loanterminmonths}}<br>
-                            Loan term in months
-                          </li>
-                          <li class="list-group-item">
-                            {{loanstartdate}}<br>
-                            Loan start date
+                            <h4>{{loanstartdate}}</h4>
+                            <h5>Mortgage start date</h5>
                           </li>
                         </ul>
                       </div>
@@ -455,18 +382,16 @@
                             <h4>EXTRA PAYMENTS INFORMATION</h4>
                           </li>
                           <li class="list-group-item" ng-show="amountAdditionalMonthly">
-                            Plus {{amountAdditionalMonthly | currency}} to your monthly payment.<br>
-                            {{amountAdditionalMonthly_count}} times (from {{loanstartdate}} to {{enddate_amountAdditionalMonthly}})
+                            Plus {{amountAdditionalMonthly | currency}} to your monthly mortgage payment.
                           </li>
                           <li class="list-group-item" ng-show="amountAdditionalYearly && dateAdditionalYearly">
-                            Plus {{amountAdditionalYearly | currency}} as an extra yearly payment occurring every {{dateAdditionalYearly}}<br>
-                            {{amountAdditionalYearly_count}} times (from {{startdate_amountAdditionalYearly}} to {{enddate_amountAdditionalYearly}})
+                            Plus {{amountAdditionalYearly | currency}} as an extra yearly mortgage payment occurring every {{dateAdditionalYearly}}
                           </li>
                           <li class="list-group-item" ng-repeat="itp in oneTimePaymentList" ng-if="copareDate(dateOneTimePaymentList[itp])">
-                            Plus {{amountOneTimePaymentList[itp] | currency}} as a one-time payment in {{dateOneTimePaymentList[itp]}}
+                            Plus ${{amountOneTimePaymentList[itp]}} as a one-time mortgage payment in {{dateOneTimePaymentList[itp]}}
                           </li>
                           <li class="list-group-item">
-                            TOTAL EXTRA PAYMENT {{totalAmountExtraPayment | currency}}
+                            <b>TOTAL EXTRA PAYMENT ${{totalAmountExtraPayment}}</b>
                           </li>
                         </ul>
                       </div>
@@ -474,36 +399,27 @@
                       <div class="col-sm-6">
                         <ul class="list-group">
                           <li class="list-group-item">
-                            <h4>LOAN PAYMENT SUMMARY</h4>
+                            <h4>MORTGAGE PAYMENT<br />SUMMARY</h4>
                           </li>
                           <li class="list-group-item">
-                            {{monthly_payment | currency}}<br>
-                            Monthly payment
+                            <h4>{{monthly_payment | currency}}</h4>
+                            <h5>Monthly Payment</h5>
                           </li>
                           <li class="list-group-item">
-                            {{monthly_principal_interest | currency}}<br>
-                            Monthly Principal & Interest
+                            <h4>{{months}}</h4>
+                            <h5>Number of Payments</h5>
                           </li>
                           <li class="list-group-item">
-                            {{months}}<br>
-                            Number of Payments
+                            <h4>{{total_paid | currency}}</h4>
+                            <h5>Total Payments</h5>
                           </li>
                           <li class="list-group-item">
-                            {{total_interest_paid | currency}}<br>
-                            Total Interest Paid
+                            <h4>{{total_interest_paid | currency}}</h4>
+                            <h5>Total Interest Paid</h5>
                           </li>
                           <li class="list-group-item">
-                            {{total_principal_paid | currency}}<br>
-                            Total Principal Paid
-                          </li>
-                          <li class="list-group-item">
-                            {{total_paid | currency}}<br>
-                            Total Payments
-                          </li>
-                          
-                          <li class="list-group-item">
-                            {{payoffdate}}<br>
-                            Pay-off Date
+                            <h4>{{payoffdate}}</h4>
+                            <h5>Pay-off Date</h5>
                           </li>
                         </ul>
                       </div>
@@ -511,39 +427,31 @@
                       <div id="loan-extra-payment-summary" ng-show="loan_extra_payment_summary_show"  class="col-sm-6">
                         <ul class="list-group">
                           <li class="list-group-item">
-                            <h4>LOAN EXTRA PAYMENTS SUMMARY</h4>
+                            <h4>MORTGAGE EXTRA PAYMENTS SUMMARY</h4>
                           </li>
                           <li class="list-group-item">
-                            {{extrapayment_monthly_payment | currency}}<br>
-                            Monthly Payment
+                            <h4>{{extrapayment_monthly_payment | currency}}</h4>
+                            <h5>Monthly Payment</h5>
                           </li>
                           <li class="list-group-item">
-                            {{monthly_principal_interest | currency}}<br>
-                            Monthly Principal & Interest
+                            <h4>{{extrapayment_months}}</h4>
+                            <h5>Number of Payments</h5>
                           </li>
                           <li class="list-group-item">
-                            {{extrapayment_months}}<br>
-                            Number of Payments
+                            <h4>{{extrapayment_total_paid | currency}}</h4>
+                            <h5>Total Payments</h5>
                           </li>
                           <li class="list-group-item">
-                            {{extrapayment_total_interest_paid | currency}}<br>
-                            Total Interest Paid
+                            <h4>{{extrapayment_total_interest_paid | currency}}</h4>
+                            <h5>Total Interest Paid</h5>
                           </li>
                           <li class="list-group-item">
-                            {{total_principal_paid | currency}}<br>
-                            Total Principal Paid
+                            <h4>{{extrapayment_payoffdate}}</h4>
+                            <h5>Pay-off Date</h5>
                           </li>
                           <li class="list-group-item">
-                            {{extrapayment_total_paid | currency}}<br>
-                            Total Payments
-                          </li>
-                          <li class="list-group-item">
-                            {{extrapayment_payoffdate}}<br>
-                            Pay-off Date
-                          </li>
-                          <li class="list-group-item">
-                            {{(total_interest_paid - extrapayment_total_interest_paid) | currency}}<br>
-                            Total interest savings
+                            <h4>{{(total_interest_paid - extrapayment_total_interest_paid) | currency}}</h4>
+                            <h5>Total interest savings</h5>
                           </li>
                         </ul>
                       </div>
@@ -562,8 +470,7 @@
                           <th>PAYMENT</th>
                           <th>PRINCIPAL</th>
                           <th>INTEREST</th>
-                          <th ng-show="extra_payments_information_show">EXTRA</th>
-                          <!-- <th>TOTAL INTEREST</th> -->
+                          <th>TOTAL INTEREST</th>
                           <th>BALANCE</th>
                         </tr>
                       </thead>
@@ -573,8 +480,7 @@
                           <td>{{yearly_amortization.yearly_payment | currency}}</td>
                           <td>{{yearly_amortization.yearly_principal | currency}}</td>
                           <td>{{yearly_amortization.yearly_interest | currency}}</td>
-                          <td ng-show="extra_payments_information_show">{{yearly_amortization.yearly_extrayearlypayment | currency}}</td>
-                          <!-- <td>{{yearly_amortization.yearly_total_interest | currency}}</td> -->
+                          <td>{{yearly_amortization.yearly_total_interest | currency}}</td>
                           <td>{{yearly_amortization.yearly_balance | currency}}</td>
                         </tr>
                       </tbody>
@@ -588,25 +494,21 @@
                     <table class="table table-condensed table-hover">
                       <thead>
                         <tr>
-                          <!-- <th>ID</th> -->
                           <th>DATE</th>
                           <th>PAYMENT</th>
                           <th>PRINCIPAL</th>
                           <th>INTEREST</th>
-                          <th ng-show="extra_payments_information_show">EXTRA</th>
-                          <!-- <th>TOTAL INTEREST</th> -->
+                          <th>TOTAL INTEREST</th>
                           <th>BALANCE</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr ng-repeat="amortization in amortization_schedule" class="{{amortization.payment_date}}">
-                          <!-- <td>{{$index + 1}}</td> -->
                           <td>{{amortization.payment_date}}</td>
                           <td>{{amortization.monthly_payment | currency}}</td>
                           <td>{{amortization.principal_part | currency}}</td>
                           <td>{{amortization.interest_part | currency}}</td>
-                          <td ng-show="extra_payments_information_show">{{amortization.extramonthlypayment | currency}}</td>
-                          <!-- <td>{{amortization.total_interest | currency}}</td> -->
+                          <td>{{amortization.total_interest | currency}}</td>
                           <td>{{amortization.balance | currency}}</td>
                         </tr>
                       </tbody>
@@ -627,13 +529,13 @@
           </div>
         </div>
         <div class="col-md-4 hidden-print">
-          <h2 style="display:none">Advertisement</h2>
+          <h2>Advertisement</h2>
         </div>
       </div>
       
       <div class="row hidden-print">
         <div class="col-md-12">
-          <h2 style="display:none">Advertisement</h2>
+          <h2>Advertisement</h2>
         </div>
       </div>
       <footer>
@@ -641,35 +543,18 @@
           <div class="col-md-6">
             <p>© 2016 Loancalculator.pw, Inc.</p>
           </div>
-          <div class="col-md-6 hidden-print">
+          <div class="col-md-6 hidden-print" ng-include="'likeus-footer.html'">
             
-            <!-- Likeus-footer.html -->
-            <ul class="nav navbar-nav navbar-right">
-            <li>
-              <div class="fb-like" data-href="http://loancalculator.pw" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-            </li>
-            <li>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://loancalculator.pw" data-text="This loan calculator will help you determine the monthly payments on a loan" data-via="loan_calc">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </li>
-            <li>
-              <!-- Place this tag where you want the share button to render. -->
-              <div class="g-plus" data-action="share" data-annotation="bubble"></div>
-            </li>
-            <div id="likeus2"></div>
-          </ul>
-          <!-- End likeus-footer.html -->
-          
           </div>
         </div>
       </footer>
     </div> <!-- /container -->
-    
-    
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
     <script>//var j = jQuery.noConflict();</script>
     <script src="js/moment.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -679,11 +564,11 @@
     <script src="js/angular-route.min.js"></script>
     <script src="js/angular-aria.min.js"></script>
     <script src="js/angular-messages.min.js"></script>
-    <script src="js/angular-material.min.js"></script>
-    <script src='js/fr-ca.min.js' charset='utf-8'></script>
+    <script src="js/angular-material.js"></script>
+    <script src='js/fr-ca.js' charset='utf-8'></script>
     <script src='js/ng-bs3-datepicker.js' charset='utf-8'></script>
     
-    <script src="js/ng-google-chart.min.js"></script>
+    <script src="js/ng-google-chart.js"></script>
     <script src="js/app.js"></script>
     
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

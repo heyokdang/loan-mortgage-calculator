@@ -5,22 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan">
+    <meta name="description" content="Loan calculator">
     <meta name="keywords" content="loan calculator,mortgage calculator,auto loan calculator,car loan calculator,mortgage,home loan calculator,mortgage payment calculator,amortization,amortization calculator,loan amortization,mortgage amortization,amortization table,loan amortization calculator,mortgage amortization calculator,amortization calculator mortgage,amortization formula,amortization chart,loan amortization schedule">
     <meta name="author" content="">
-    <meta name="google-site-verification" content="lN-dqbwZvJ6AJafFNevQtC7EZorowspUwuRGOZ8Hf1c" />
 
     <!-- Facebook Like, Share content -->
-    <meta property="og:url"                content="http://www.loancalculator.pw" />
+    <meta property="og:url"                content="http://www.loancalculator.pw/loan-calculator.html" />
     <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="Welcom to LoanCalculator.pw!" />
-    <meta property="og:description"        content="The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan" />
-    <meta property="og:image"              content="img/loan-calculator1.jpg" />
+    <meta property="og:title"              content="Loan calculator" />
+    <meta property="og:description"        content="This loan calculator will help you determine the monthly payments on a loan" />
+    <meta property="og:image"              content="img/loan-calculator.jpg" />
     <meta property="og:site_name"          content="Loancalculator" />
     <meta property="fb:app_id"             content="957153911066174" />
 
     <title>Loan Calculator</title>
-    
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -124,14 +123,11 @@
       <div class="row hidden-print">
         <div class="col-md-8 col-sm-12">
           <h1>Loan Calculator</h1>
-          <p>The best loan calculator softwave, this loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate, click ADD EXTRA PAYMENTS to add extra payments. This calculator can be used for mortgage, auto, or any other fixed loan types.</p>
+          <p>This loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate. This calculator can be used for mortgage, auto, or any other fixed loan types.</p>
           <hr>
           <div class="row">
             <div class="col-md-12 calculator-form">
               <form class="" ng-submit="calculate()">
-
-                <div class="row">
-                  <div class="col-md-6">
 
                     <div class="form-group">
                       <div class="input-group">
@@ -152,13 +148,10 @@
 
                     <div class="form-group">
                       <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Loan amount</span><span class="spright">$</span></div>
+                        <div class="input-group-addon"><span class="spleft">Loan Amount</span><span class="spright">$</span></div>
                         <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamount" readonly>
                       </div>
                     </div>
-
-                  </div>
-                  <div class="col-md-6">
 
                     <div class="form-group">
                       <div class="input-group">
@@ -185,19 +178,13 @@
                         <ng-bs3-datepicker id="loanstartdate" data-ng-model='loanstartdate' date-min-view-mode="months" date-view-mode="months" date-format="MMM YYYY" language="en-ca" />
                     </div>
 
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">
                     <div class="form-group">
                       <button id="bt_calculator" type="submit" class="btn btn-primary">CALCULATE</button>
                     </div>
-                  </div>
-                </div>
+
               </form>
+
             </div>
-
-
 
           </div>
         </div>
@@ -659,13 +646,13 @@
             <div id="likeus2"></div>
           </ul>
           <!-- End likeus-footer.html -->
-          
+
           </div>
         </div>
       </footer>
     </div> <!-- /container -->
-    
-    
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -681,7 +668,7 @@
     <script src="js/angular-messages.min.js"></script>
     <script src="js/angular-material.min.js"></script>
     <script src='js/fr-ca.min.js' charset='utf-8'></script>
-    <script src='js/ng-bs3-datepicker.js' charset='utf-8'></script>
+    <script src='js/ng-bs3-datepicker.min.js' charset='utf-8'></script>
     
     <script src="js/ng-google-chart.min.js"></script>
     <script src="js/app.js"></script>

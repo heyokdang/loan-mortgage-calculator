@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" data-ng-app='demo'>
+<head>
+    <title>Angular Bootstrap3 Datepicker Demo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='css/ng-bs3-datepicker.css'>
+    <!-- <link rel='stylesheet' href='css/font-awesome.css'> -->
+
+        <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/angular-material.min.css" rel="stylesheet">
+
+    <link href="css/ng-bs3-datepicker.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/appcopy.css" rel="stylesheet">
+
+</head>
+<body>
+    <div>
+        <div data-ng-controller='AppCtrl'>
+
+            <div class='form-group'>
+              <label>A date with french canadian language</label>
+              <ng-bs3-datepicker id="date1" data-ng-model='date1' language="en-ca" date-min-view-mode="months" date-view-mode="years" date-format="MM/YYYY"/>
+            </div>
+
+            <div class='form-group'>
+              <label>A date in canadian english</label>
+              <ng-bs3-datepicker id="date2" data-ng-model='date2' language="en-ca"/>
+            </div>
+            <div class='form-group'>
+              <label>A simple date with another format</label>
+              <ng-bs3-datepicker id="date3" data-ng-model='date3' language="fr-ca" date-format="DD/MM/YYYY"/>
+            </div>
+            {{test = 'en-ca'}}
+            <div class='form-group'>
+              <label>A date in canadian english using an expression</label>
+              <ng-bs3-datepicker id="date4" data-ng-model='date4' language="test"/>
+            </div>
+            <hr>
+            <div class='form-group' ng-repeat="item in datepickerlist">
+              <label>Test repeat date: {{item.name}}</label>
+              <ng-bs3-datepicker id="date-{{item.name}}" ng-model="item.name" date-format="MMMM YYYY" language="test"/>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
+    <script src="js/angular-material.js"></script>
+    <script src='js/fr-ca.js' charset='utf-8'></script>
+
+    <script src='js/ng-bs3-datepicker.js' charset='utf-8'></script>
+
+    <script src="js/ng-google-chart.js"></script>
+
+    <script type='application/javascript'>
+        var app = angular.module('demo', ['ng-bs3-datepicker']);
+        app.controller('AppCtrl', function($scope){
+          $scope.datepickerlist = [];
+          $scope.datepickerlist.push({name: 'dp1'});
+          $scope.datepickerlist.push({name: 'dp2'});
+          $scope.datepickerlist.push({name: 'dp3'});
+          $scope.datepickerlist.push({name: 'dp4'});
+          
+        });
+    </script>
+</body>
+</html>

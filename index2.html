@@ -20,7 +20,7 @@
     <meta property="fb:app_id"             content="957153911066174" />
 
     <title>Loan Calculator</title>
-    
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,9 +29,9 @@
     <link href="css/ng-bs3-datepicker.css" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="css/app.css" rel="stylesheet">
+    <link href="css/app.min.css" rel="stylesheet">
     <link href="css/loan-calculator.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" media="print" href="css/mortgage-calculator-print.css">
+    <link rel="stylesheet" type="text/css" media="print" href="css/print.css">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -129,70 +129,43 @@
           <div class="row">
             <div class="col-md-12 calculator-form">
               <form class="" ng-submit="calculate()">
-
-                <div class="row">
-                  <div class="col-md-6">
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Home value</span><span class="spright">$</span></div>
-                        <input money-num ng-model="homevalue" ng-change="Callhomevalue()" type="text" class="form-control" id="homevalue">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Down payment</span><span class="spright">$</span></div>
-                        <input money-num ng-model="downpayment" ng-change="Calldownpaymentpercent()" type="text" class="form-control form-control2" id="downpayment">
-                        <div class="form-control2">
-                          <input ym-num ng-model="downpaymentpercent" ng-change="Calldownpayment()" type="text" class="form-control percent" id="downpaymentpercent"><span class="percenticon">%</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Loan amount</span><span class="spright">$</span></div>
-                        <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamount" readonly>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon"><span class="spleft">Interest rate per year</span><span class="spright">%</span></div>
-                        <input ng-model="interestrateperyear" ym-num type="text" class="form-control" id="interestrateperyear">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon">Loan term in years</div>
-                        <input ng-model="loanterminyears" ym-num ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
-                      </div>
-                    </div>
-                
-                    <div class="form-group">
-                      <div class="input-group">
-                        <div class="input-group-addon">or Loan term in months</div>
-                        <input ng-model="loanterminmonths" ym-num ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                        <ng-bs3-datepicker id="loanstartdate" data-ng-model='loanstartdate' date-min-view-mode="months" date-view-mode="months" date-format="MMM YYYY" language="en-ca" />
-                    </div>
-
+              
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><span class="spleft">Loan amount</span><span class="spright">$</span></div>
+                    <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamountid">
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <button id="bt_calculator" type="submit" class="btn btn-primary">CALCULATE</button>
-                    </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">Loan term in years</div>
+                    <input ng-model="loanterminyears" ym-num ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
                   </div>
+                </div>
+                
+                <p class="br-ortext">or</p>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">Loan term in months</div>
+                    <input ng-model="loanterminmonths" ym-num ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><span class="spleft">Interest rate per year</span><span class="spright">%</span></div>
+                    <input ng-model="interestrateperyear" ym-num type="text" class="form-control" id="interestrateperyear">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <ng-bs3-datepicker id="loanstartdate" data-ng-model='loanstartdate' date-min-view-mode="months" date-view-mode="months" date-format="MMM YYYY" language="en-ca" />
+                </div>
+
+                <div class="form-group">
+                  <button id="bt_calculator" type="submit" class="btn btn-primary">CALCULATE</button>
                 </div>
               </form>
             </div>
@@ -307,7 +280,7 @@
               
               </div>
             </div>
-
+            
             <div class="col-sm-12 hidden-print">
               
               <button id="amortization_schedule_bt" type="button" class="btn btn-success" ng-click="showAmortizationSchedule()">
@@ -386,7 +359,21 @@
                         <br><br><br>
                         <br>
                       </div>
-                    </div>                    
+                    </div>
+                    
+                    <!-- <div class="row" ng-show="drawcharts">
+                      <div class="col-sm-12">
+                        <h4>YEARLY AMORTIZATION CHART</h4>
+                        <div google-chart chart="lineYearlyAmortizationAnnotationChartObject" ng-show="annualamortizationtable" class="chart"></div>
+                      </div>
+                    </div> -->
+                    
+                    <!-- <div class="row" ng-show="drawcharts">
+                      <div class="col-sm-12">
+                        <div google-chart chart="lineYearlyAmortizationFullChartObject" ng-show="annualamortizationtable" class="chart"></div>
+                      </div>
+                    </div> -->
+                    
 
                     <div class="row" ng-show="drawcharts">
                       <div class="col-sm-12">
@@ -419,20 +406,8 @@
                             <h4>LOAN DATA INFORMATION</h4>
                           </li>
                           <li class="list-group-item">
-                            {{homevalue | currency}}<br>
-                            Home value
-                          </li>
-                          <li class="list-group-item">
-                            {{downpayment | currency}} ({{downpaymentpercent}}%)<br>
-                            Down payment
-                          </li>
-                          <li class="list-group-item">
-                            {{loanamount | currency}}<br>
+                            ${{loanamount}}<br>
                             Loan amount
-                          </li>
-                          <li class="list-group-item">
-                            {{interestrateperyear}}%<br>
-                            Interest rate per year
                           </li>
                           <li class="list-group-item">
                             {{loanterminyears}}<br>
@@ -441,6 +416,10 @@
                           <li class="list-group-item">
                             {{loanterminmonths}}<br>
                             Loan term in months
+                          </li>
+                          <li class="list-group-item">
+                            {{interestrateperyear}}<br>
+                            Interest rate per year
                           </li>
                           <li class="list-group-item">
                             {{loanstartdate}}<br>
@@ -455,18 +434,16 @@
                             <h4>EXTRA PAYMENTS INFORMATION</h4>
                           </li>
                           <li class="list-group-item" ng-show="amountAdditionalMonthly">
-                            Plus {{amountAdditionalMonthly | currency}} to your monthly payment.<br>
-                            {{amountAdditionalMonthly_count}} times (from {{loanstartdate}} to {{enddate_amountAdditionalMonthly}})
+                            Plus {{amountAdditionalMonthly | currency}} to your monthly payment.
                           </li>
                           <li class="list-group-item" ng-show="amountAdditionalYearly && dateAdditionalYearly">
-                            Plus {{amountAdditionalYearly | currency}} as an extra yearly payment occurring every {{dateAdditionalYearly}}<br>
-                            {{amountAdditionalYearly_count}} times (from {{startdate_amountAdditionalYearly}} to {{enddate_amountAdditionalYearly}})
+                            Plus {{amountAdditionalYearly | currency}} as an extra yearly payment occurring every {{dateAdditionalYearly}}
                           </li>
                           <li class="list-group-item" ng-repeat="itp in oneTimePaymentList" ng-if="copareDate(dateOneTimePaymentList[itp])">
-                            Plus {{amountOneTimePaymentList[itp] | currency}} as a one-time payment in {{dateOneTimePaymentList[itp]}}
+                            Plus ${{amountOneTimePaymentList[itp]}} as a one-time payment in {{dateOneTimePaymentList[itp]}}
                           </li>
                           <li class="list-group-item">
-                            TOTAL EXTRA PAYMENT {{totalAmountExtraPayment | currency}}
+                            TOTAL EXTRA PAYMENT ${{totalAmountExtraPayment}}
                           </li>
                         </ul>
                       </div>
@@ -478,29 +455,20 @@
                           </li>
                           <li class="list-group-item">
                             {{monthly_payment | currency}}<br>
-                            Monthly payment
-                          </li>
-                          <li class="list-group-item">
-                            {{monthly_principal_interest | currency}}<br>
-                            Monthly Principal & Interest
+                            Monthly Payment
                           </li>
                           <li class="list-group-item">
                             {{months}}<br>
                             Number of Payments
                           </li>
                           <li class="list-group-item">
-                            {{total_interest_paid | currency}}<br>
-                            Total Interest Paid
-                          </li>
-                          <li class="list-group-item">
-                            {{total_principal_paid | currency}}<br>
-                            Total Principal Paid
-                          </li>
-                          <li class="list-group-item">
                             {{total_paid | currency}}<br>
                             Total Payments
                           </li>
-                          
+                          <li class="list-group-item">
+                            {{total_interest_paid | currency}}<br>
+                            Total Interest Paid
+                          </li>
                           <li class="list-group-item">
                             {{payoffdate}}<br>
                             Pay-off Date
@@ -518,24 +486,16 @@
                             Monthly Payment
                           </li>
                           <li class="list-group-item">
-                            {{monthly_principal_interest | currency}}<br>
-                            Monthly Principal & Interest
-                          </li>
-                          <li class="list-group-item">
                             {{extrapayment_months}}<br>
                             Number of Payments
                           </li>
                           <li class="list-group-item">
-                            {{extrapayment_total_interest_paid | currency}}<br>
-                            Total Interest Paid
-                          </li>
-                          <li class="list-group-item">
-                            {{total_principal_paid | currency}}<br>
-                            Total Principal Paid
-                          </li>
-                          <li class="list-group-item">
                             {{extrapayment_total_paid | currency}}<br>
                             Total Payments
+                          </li>
+                          <li class="list-group-item">
+                            {{extrapayment_total_interest_paid | currency}}<br>
+                            Total Interest Paid
                           </li>
                           <li class="list-group-item">
                             {{extrapayment_payoffdate}}<br>
@@ -562,8 +522,7 @@
                           <th>PAYMENT</th>
                           <th>PRINCIPAL</th>
                           <th>INTEREST</th>
-                          <th ng-show="extra_payments_information_show">EXTRA</th>
-                          <!-- <th>TOTAL INTEREST</th> -->
+                          <th>TOTAL INTEREST</th>
                           <th>BALANCE</th>
                         </tr>
                       </thead>
@@ -573,8 +532,7 @@
                           <td>{{yearly_amortization.yearly_payment | currency}}</td>
                           <td>{{yearly_amortization.yearly_principal | currency}}</td>
                           <td>{{yearly_amortization.yearly_interest | currency}}</td>
-                          <td ng-show="extra_payments_information_show">{{yearly_amortization.yearly_extrayearlypayment | currency}}</td>
-                          <!-- <td>{{yearly_amortization.yearly_total_interest | currency}}</td> -->
+                          <td>{{yearly_amortization.yearly_total_interest | currency}}</td>
                           <td>{{yearly_amortization.yearly_balance | currency}}</td>
                         </tr>
                       </tbody>
@@ -588,25 +546,21 @@
                     <table class="table table-condensed table-hover">
                       <thead>
                         <tr>
-                          <!-- <th>ID</th> -->
                           <th>DATE</th>
                           <th>PAYMENT</th>
                           <th>PRINCIPAL</th>
                           <th>INTEREST</th>
-                          <th ng-show="extra_payments_information_show">EXTRA</th>
-                          <!-- <th>TOTAL INTEREST</th> -->
+                          <th>TOTAL INTEREST</th>
                           <th>BALANCE</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr ng-repeat="amortization in amortization_schedule" class="{{amortization.payment_date}}">
-                          <!-- <td>{{$index + 1}}</td> -->
                           <td>{{amortization.payment_date}}</td>
                           <td>{{amortization.monthly_payment | currency}}</td>
                           <td>{{amortization.principal_part | currency}}</td>
                           <td>{{amortization.interest_part | currency}}</td>
-                          <td ng-show="extra_payments_information_show">{{amortization.extramonthlypayment | currency}}</td>
-                          <!-- <td>{{amortization.total_interest | currency}}</td> -->
+                          <td>{{amortization.total_interest | currency}}</td>
                           <td>{{amortization.balance | currency}}</td>
                         </tr>
                       </tbody>
@@ -659,13 +613,13 @@
             <div id="likeus2"></div>
           </ul>
           <!-- End likeus-footer.html -->
-          
+
           </div>
         </div>
       </footer>
     </div> <!-- /container -->
-    
-    
+
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -681,10 +635,10 @@
     <script src="js/angular-messages.min.js"></script>
     <script src="js/angular-material.min.js"></script>
     <script src='js/fr-ca.min.js' charset='utf-8'></script>
-    <script src='js/ng-bs3-datepicker.js' charset='utf-8'></script>
+    <script src='js/ng-bs3-datepicker.min.js' charset='utf-8'></script>
     
     <script src="js/ng-google-chart.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app2.js"></script>
     
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>

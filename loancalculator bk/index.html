@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LoanCalculatorApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Loan Calculator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/angular-material.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+  </head>
+
+  <body ng-controller="LoanCalculatorCtr as LCCtr" ng-cloak>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header" ng-include="'navbar-header.html'">
+          
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" ng-include="'navbar.html'">
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-8">
+          <h1>Loan Calculator</h1>
+          <p>This loan calculator will help you determine the monthly payments on a loan. Simply enter the loan amount, term and interest rate in the fields below and click calculate. This calculator can be used for mortgage, auto, or any other fixed loan types.</p>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 calculator-form">
+              <form class="" ng-submit="calculate()">
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><span class="spleft">Loan amount</span><span class="spright">$</span></div>
+                    <input money-num ng-model="loanamount" type="text" class="form-control" id="loanamountid">
+                    <!--
+                    <input money-num ng-model="loanamount" ng-focus="numberformat()" ng-blur="currencyformat()" type="text" class="form-control" id="loanamountid">
+                    -->
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">Loan term in years</div>
+                    <input onclick="this.select()" ng-model="loanterminyears" ng-change="Calloanterminmonths()" type="text" class="form-control" id="loanterminyearsid">
+                  </div>
+                </div>
+
+                
+                <p class="br-ortext">Or</p>
+
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">Loan term in months</div>
+                    <input onclick="this.select()" ng-model="loanterminmonths" ng-change="Calloanterminyears()" type="text" class="form-control" id="loanterminmonthsid">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon"><span class="spleft">Interest rate per year</span><span class="spright">%</span></div>
+                    <input onclick="this.select()" ng-model="interestrateperyear" type="text" class="form-control" id="interestrateperyear">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class='input-group date' id='loanstartdate'>
+                    <div class="input-group-addon">Loan start date</div>
+                    <input type='text' ng-model="loanstartdate" name="loanstartdate" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">
+                        </span>
+                    </span>
+                  </div>
+                </div>
+                <!--
+                <div class="row">
+                  <div class="col-md-12" style="text-align:center">
+                    <button type="submit" class="btn btn-primary">CALCULATE</button>
+                  </div>
+                </div>
+                -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">CALCULATE</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div google-chart chart="chartObject"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+
+          <button id="amortization_schedule_bt" type="button" class="btn btn-success" data-toggle="collapse" data-target="#amortization_schedule">
+            <span class="glyphicon glyphicon-collapse-down"></span> SHOW AMORTIZATION SCHEDULE
+          </button>
+
+        </div>
+
+        <div class="col-md-8" style="margin-top:20px;margin-bottom:20px;">
+          <button id="add_extra_payments_bt" type="button" class="btn btn-link" data-toggle="collapse" data-target="#add_extra_payments_form">
+            <span class="glyphicon glyphicon-collapse-down"></span> ADD EXTRA PAYMENTS
+          </button>
+
+
+        </div>
+
+        <div class="col-md-8 add_extra_payments_form">
+          <div id="add_extra_payments_form">
+            
+            <form class="" ng-submit="add_extra_payments_calculate()">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon"><span class="spleft">$</span></div>
+                      <input money-num onclick="this.select()" ng-model="monthlyAdditionalAmount" type="text" class="form-control" id="monthlyAdditionalAmount">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  to your monthly payment.
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon"><span class="spleft">$</span></div>
+                      <input money-num onclick="this.select()" ng-model="yearlyAdditionalAmount" type="text" class="form-control" id="yearlyAdditionalAmount">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  as an extra yearly payment occurring every
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class='input-group date' id='yearlyAdditionalDate'>
+                      <input type='text' ng-model="yearlyAdditionalDate" name="yearlyAdditionalDate" class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar">
+                          </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon"><span class="spleft">$</span></div>
+                      <input money-num onclick="this.select()" ng-model="OnetimeAdditionalAmount" type="text" class="form-control" id="OnetimeAdditionalAmount">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  as a one-time payment in
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    
+                    <div class='input-group date' id='OnetimeAdditionalDate'>
+                      <input type='text' ng-model="OnetimeAdditionalDate" name="OnetimeAdditionalDate" class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar">
+                          </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                      <button type="button" ng-click="testdate()" class="btn btn-primary">Add more one-time payment</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          
+          </div>
+        </div>
+
+        <div class="col-md-8" style="text-align:center">
+          
+          <div id="amortization_schedule" class="table-responsive collapse">
+            <table class="table table-condensed table-hover">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>PAYMENT</th>
+                  <th>PRINCIPAL</th>
+                  <th>INTEREST</th>
+                  <th style="">TOTAL INTEREST</th>
+                  <th>BALANCE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="amortization in amortization_schedule">
+                  <td>{{amortization.payment_date | date : 'MMM yyyy'}}</td>
+                  <td>{{monthly_payment | currency}}</td>
+                  <td>{{amortization.principal_part | currency}}</td>
+                  <td>{{amortization.interest_part | currency}}</td>
+                  <td>{{amortization.total_interest | currency}}</td>
+                  <td>{{amortization.balance | currency}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
+    <script src="js/angular-material.js"></script>
+
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="js/ng-google-chart.js"></script>
+    <script src="js/app.js"></script>
+    
+    <script>
+      $(document).ready(function(){
+        $("#amortization_schedule").on("hide.bs.collapse", function(){
+          $("#amortization_schedule_bt").html('<span class="glyphicon glyphicon-collapse-down"></span> SHOW AMORTIZATION SCHEDULE');
+        });
+        $("#amortization_schedule").on("show.bs.collapse", function(){
+          $("#amortization_schedule_bt").html('<span class="glyphicon glyphicon-collapse-up"></span> CLOSE AMORTIZATION SCHEDULE');
+        });
+
+        $("#add_extra_payments_form").on("hide.bs.collapse", function(){
+          $("#add_extra_payments_bt").html('<span class="glyphicon glyphicon-collapse-down"></span> ADD EXTRA PAYMENTS');
+        });
+        $("#add_extra_payments_form").on("show.bs.collapse", function(){
+          $("#add_extra_payments_bt").html('<span class="glyphicon glyphicon-collapse-up"></span> ADD EXTRA PAYMENTS');
+        });
+        $('#loanstartdate').datetimepicker({
+              defaultDate: new Date(),
+              viewMode: 'years',
+              format: 'MMM YYYY',
+
+        });
+        $('#yearlyAdditionalDate').datetimepicker({
+              defaultDate: new Date(),
+              viewMode: 'years',
+              format: 'MMM YYYY',
+        });
+        
+        $('#OnetimeAdditionalDate').datetimepicker({
+              defaultDate: new Date(),
+              viewMode: 'years',
+              format: 'MMM YYYY',
+
+        });
+        
+      });
+    </script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/assets-cache.js"></script>
+  </body>
+</html>

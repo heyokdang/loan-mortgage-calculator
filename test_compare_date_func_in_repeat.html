@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Loan Calculator</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="css/angular-material.min.css" rel="stylesheet">
+
+  <link href="css/ng-bs3-datepicker.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/app.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="js/ie-emulation-modes-warning.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="MyCtrl">
+        <div class="row">
+        
+        <div class="col-md-8" style="margin-top:20px;margin-bottom:20px;">
+          <button id="add_extra_payments_bt" type="button" class="btn btn-link" data-toggle="collapse" data-target="#add_extra_payments_form">
+            <span class="glyphicon glyphicon-collapse-down"></span> ADD EXTRA PAYMENTS
+          </button>
+        </div>
+
+        <div class="col-md-8 add_extra_payments_form">
+          <div id="add_extra_payments_form" class="collapse">
+            
+            <form class="" ng-submit="applyExtraPayments()">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon"><span class="spleft">$</span></div>
+                      <input money-num onclick="this.select()" ng-model="amountAdditionalMonthly" type="text" class="form-control" id="amountAdditionalMonthly">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  to your monthly payment.
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon"><span class="spleft">$</span></div>
+                      <input money-num onclick="this.select()" ng-model="amountAdditionalYearly" type="text" class="form-control" id="amountAdditionalYearly">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  as an extra yearly payment occurring every
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    
+                      <ng-bs3-datepicker id="dateAdditionalYearly" data-ng-model='dateAdditionalYearly' date-min-view-mode="months" date-view-mode="months" date-format="MMM" language="en-ca">
+
+                        <button type="button" class="btn btn-default disabled btn-sm" >
+                          <span class="glyphicon glyphicon-repeat"></span>
+                        </button>
+                        <!-- <button type="button" class="btn btn-link btn-sm">
+                          <i class="glyphicon glyphicon-none"></i>
+                        </button> -->
+
+                      </ng-bs3-datepicker>
+                    
+                  </div>
+                </div>
+              </div>
+
+              <!--  as a one-time payment in  -->
+              <div class="row" ng-repeat="onetimepayment in oneTimePaymentList">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon"><span class="spleft">$</span></div>
+                      <input money-num onclick="this.select()" ng-model="amountOneTimePaymentList[onetimepayment]" type="text" class="form-control" id="{{onetimepayment}}">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  as a one-time payment in
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <ng-bs3-datepicker ng-model='dateOneTimePaymentList[onetimepayment]' date-min-view-mode="months" date-view-mode="months" date-format="MMM YYYY" language="en-ca">
+                      <button type="button" class="btn btn-danger btn-sm" ng-click="removeaOneTimePayment(onetimepayment)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </button>
+                    </ng-bs3-datepicker>
+                  </div>
+                </div>
+              </div>
+              <!-- as a one-time payment in  -->
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-primary bt-apply-extra-payments">APPLY EXTRA PAYMENTS</button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <button type="button" ng-click="addaOneTimePayment()" class="btn btn-info bt-add-more-one-time-payment">
+                        <span class="glyphicon glyphicon-plus"></span> Add more one-time payment
+                      </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          
+          </div>
+        </div>
+</div>
+
+
+
+
+  <button type="button" ng-click="addData()" class="btn btn-info">
+    <span class="glyphicon glyphicon-plus"></span> Add Data
+  </button>
+  <div ng-repeat="da in data" else-if="showFrom(da, '2 Jan 2015')">
+     <div>From: {{da}}</div>
+  </div>
+
+
+<ul>
+  <li style="text-align:left" ng-show="amountAdditionalMonthly">Plus {{amountAdditionalMonthly | currency}} to your monthly payment.</li>
+  <li style="text-align:left" ng-show="amountAdditionalYearly && dateAdditionalYearly">Plus {{amountAdditionalYearly | currency}} as an extra yearly payment occurring every {{dateAdditionalYearly}}</li>
+  <li style="text-align:left" ng-repeat="itp in oneTimePaymentList" else-if="copareDate(itp, '2 Jan 2015')">
+    Plus {{amountOneTimePaymentList[itp]}} as a one-time payment in {{dateOneTimePaymentList[itp]}}
+  </li>
+</ul>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script>jQuery.noConflict();</script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/angular-aria.min.js"></script>
+<script src="js/angular-messages.min.js"></script>
+<script src="js/angular-material.js"></script>
+<script src='js/fr-ca.js' charset='utf-8'></script>
+<script src='js/ng-bs3-datepicker.js' charset='utf-8'></script>
+<script src="js/ng-google-chart.js"></script>
+
+<script>
+
+var myApp = angular.module("myApp", ['googlechart','ngMaterial', 'ngMessages', 'ng-bs3-datepicker']);
+myApp.directive('elseIf', function() {
+    return {
+        link: function(scope, element, attrs) {
+            if(scope.$eval(attrs.elseIf)) {
+                // remove '<div ng-if...></div>'
+                element.replaceWith(element.children())
+            } else {
+                element.replaceWith(' ')
+            }
+        }
+    }
+});
+
+myApp.controller("MyCtrl", function($scope) {
+
+    $scope.data = ['1 Jan 2013','1 Jan 2014','1 Jan 2015', '1 Jan 2016', '1 Jan 2017'];
+    //Extra payments
+    $scope.amountAdditionalMonthly = 0;
+    $scope.amountAdditionalYearly = 0;
+    // $scope.dateAdditionalYearly = "select a time";
+    $scope.dateAdditionalYearly = "";
+    $scope.id = 0;
+    $scope.amountOneTimePaymentList =[];
+    $scope.dateOneTimePaymentList = [];
+    $scope.oneTimePaymentList = [];
+
+    $scope.showFrom = function(da, db) {
+      var da1 = new Date(da);
+      var da2 = new Date(db);
+      return da1 >= da2;
+    };
+
+    $scope.copareDate = function(da, db){
+      var da1 = new Date("1 " + $scope.dateOneTimePaymentList[da]);
+      var da2 = new Date(db);
+      // alert(da1.toString() + " ---- " + da2);
+      return da1 >= da2;
+    };
+    var datetest = 2012;
+    $scope.addData = function(){
+      datetest++;
+      var temp = '1 Jun ' + datetest;
+      $scope.data.push(temp);
+    };
+
+    $scope.addaOneTimePayment = function(){
+      $scope.id = $scope.id + 1;
+      $scope.oneTimePaymentList.push("onetimepayment-" + $scope.id);
+      $scope.amountOneTimePaymentList["onetimepayment-" + $scope.id] = 0;
+      // scope.dateOneTimePaymentList["onetimepayment-" + scope.id] = 'select a time';
+      $scope.dateOneTimePaymentList["onetimepayment-" + $scope.id] = '';
+    };
+
+    $scope.removeaOneTimePayment = function(onetimepaymentName){
+      //alert(onetimepaymentName);
+      //alert(scope.amountOneTimePaymentList[onetimepaymentName] + "; " + scope.dateOneTimePaymentList[onetimepaymentName]);
+      var index = $scope.oneTimePaymentList.indexOf(onetimepaymentName);
+      $scope.oneTimePaymentList.splice(index, 1);
+      delete $scope.amountOneTimePaymentList[onetimepaymentName];
+      delete $scope.dateOneTimePaymentList[onetimepaymentName];
+    };
+
+});
+
+//  
+</script>
+<script>
+      jQuery( document ).ready(function( $ ) {
+        $("#amortization_schedule").on("hide.bs.collapse", function(){
+          $("#amortization_schedule_bt").html('<span class="glyphicon glyphicon-collapse-down"></span> SHOW AMORTIZATION SCHEDULE');
+        });
+        $("#amortization_schedule").on("show.bs.collapse", function(){
+          $("#amortization_schedule_bt").html('<span class="glyphicon glyphicon-collapse-up"></span> CLOSE AMORTIZATION SCHEDULE');
+        });
+
+        $("#add_extra_payments_form").on("hide.bs.collapse", function(){
+          $("#add_extra_payments_bt").html('<span class="glyphicon glyphicon-collapse-down"></span> ADD EXTRA PAYMENTS');
+        });
+        $("#add_extra_payments_form").on("show.bs.collapse", function(){
+          $("#add_extra_payments_bt").html('<span class="glyphicon glyphicon-collapse-up"></span> ADD EXTRA PAYMENTS');
+        });
+
+        $("#bt_calculator, .bt-apply-extra-payments").click(function(){
+          $("#amortization_schedule").collapse('show');
+        });
+
+        $(".bt-apply-extra-payments").click(function(){
+          $("#loan-extra-payment-summary").collapse('show');
+        });
+
+        $("#bt_calculator").click(function(){
+          $("#add_extra_payments_form").collapse('hide');
+          // $("#add_extra_payments_bt").html('<span class="glyphicon glyphicon-collapse-down"></span> ADD EXTRA PAYMENTS');
+          $("#loan-extra-payment-summary").collapse('hide');
+        });
+
+        $("div#loanstartdate .input-group-addon").attr('style','display:""');
+
+      });
+ 
+    </script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/assets-cache.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="MyCtrl">
+       
+  <button type="button" ng-click="addData()" class="btn btn-info">
+    <span class="glyphicon glyphicon-plus"></span> Add Data
+  </button>
+
+  <div ng-repeat="da in data" ng-if="showFrom(da, '2 Jan 2015')">
+     <div>From: {{da}}</div>
+  </div>
+</div>
+
+<script src="https://code.angularjs.org/1.4.8/angular.min.js"></script>
+
+<script>
+
+var myApp = angular.module("myApp", []);
+
+myApp.directive('elseIf', function() {
+    return {
+        link: function(scope, element, attrs) {
+            if(scope.$eval(attrs.elseIf)) {
+                // remove '<div ng-if...></div>'
+                element.replaceWith(element.children())
+            } else {
+                element.replaceWith(' ')
+            }
+        }
+    }
+});
+
+myApp.controller("MyCtrl", function($scope) {
+
+    $scope.data = ['1 Jan 2013','1 Jan 2014','1 Jan 2015', '1 Jan 2016', '1 Jan 2017', '1 Jan 2018'];
+
+    $scope.showFrom = function(da, db) {
+      var da1 = new Date(da);
+      var da2 = new Date(db);
+      return da1 >= da2;
+    };
+
+    var datetest = 2012;
+    $scope.addData = function(){
+      datetest++;
+      var temp = '1 Jun ' + datetest;
+      $scope.data.push(temp);
+    };
+
+});
+
+//  
+</script>
+
+</body>
+</html>
